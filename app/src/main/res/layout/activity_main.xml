@@ -13,4 +13,10 @@
         android:layout_height="wrap_content"
         android:text="滑动开关" />
 
+    <Button
+        android:id="@+id/auto_attribute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义属性" />
+
 </LinearLayout>

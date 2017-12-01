@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import control.custom.customcontrol.activity.AutoAttributeActivity;
 import control.custom.customcontrol.activity.ToggleButtonActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -17,8 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         findViewById(R.id.slide_switch).setOnClickListener(this);
+        findViewById(R.id.auto_attribute).setOnClickListener(this);
     }
 
     @Override
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.slide_switch:
                 startActivity(new Intent(this, ToggleButtonActivity.class));
+                break;
+            case R.id.auto_attribute:
+                startActivity(new Intent(this, AutoAttributeActivity.class));
                 break;
         }
     }
