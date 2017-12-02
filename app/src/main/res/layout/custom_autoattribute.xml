@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:atguigu="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <control.custom.customcontrol.view.AutoAttributeView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        atguigu:my_age="100"
-        atguigu:my_bg="@drawable/landscape"
-        atguigu:my_name="android" />
+        app:my_age="100"
+        app:my_bg="@drawable/landscape"
+        app:my_name="android" />
 
 </RelativeLayout>
