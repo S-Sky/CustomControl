@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ToggleButtonActivity" />
-        <activity android:name=".activity.AutoAttributeActivity"/>
+        <activity android:name=".activity.AutoAttributeActivity" />
+        <activity android:name=".activity.MyViewPagerActivity" />
     </application>
 
 </manifest>
