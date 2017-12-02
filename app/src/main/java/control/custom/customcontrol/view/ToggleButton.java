@@ -13,6 +13,7 @@ import android.view.View;
 import control.custom.customcontrol.R;
 
 /**
+ * 自定义开关
  * Created by Administrator on 2017/12/1 0001.
  * 一个视图从创建到显示过程中的主要方法
  * 1、构造方法实例化类
