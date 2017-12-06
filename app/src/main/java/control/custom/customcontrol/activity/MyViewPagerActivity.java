@@ -3,6 +3,7 @@ package control.custom.customcontrol.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -34,6 +35,11 @@ public class MyViewPagerActivity extends AppCompatActivity {
             //添加到MyViewGroup这个view中
             myViewPager.addView(imageView);
         }
+
+        //添加测试页面
+        View testView = View.inflate(this, R.layout.test, null);
+        myViewPager.addView(testView,2);
+
         for (int i = 0; i < myViewPager.getChildCount(); i++) {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i); //0-4
