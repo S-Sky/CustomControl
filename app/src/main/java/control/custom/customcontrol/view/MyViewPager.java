@@ -107,8 +107,7 @@ public class MyViewPager extends ViewGroup {
     /**
      * dispatchTouchEvent方法用于事件的分发,Android中所有的事件都必须经过这个方法的分发,然后决定是
      * 自身消费当前事件还是继续往下分发给子控件处理。
-     * 返回true表示不继续分发,事件没有被消费,
-     * 如果是ViewGroup则分发给onInterceptTouchEvent进行判断是否拦截该事件
+     * 返回true表示不继续分发,事件没有被消费,如果是ViewGroup则分发给onInterceptTouchEvent进行判断是否拦截该事件
      *
      * @param ev
      * @return
