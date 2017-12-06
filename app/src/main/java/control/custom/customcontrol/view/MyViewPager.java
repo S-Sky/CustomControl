@@ -6,6 +6,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Scroller;
 import android.widget.Toast;
 
 /**
@@ -27,7 +28,8 @@ public class MyViewPager extends ViewGroup {
      */
     private int currentIndex;
 
-    private MyScroller scroller;
+    private Scroller scroller; //系统的
+    private OnPagerChangerListener mOnPagerChangerListener;
 
     public MyViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -35,7 +37,7 @@ public class MyViewPager extends ViewGroup {
     }
 
     private void initView(final Context context) {
-        scroller = new MyScroller();
+        scroller = new Scroller(context);
         //2、实例化手势识别器
         detector = new GestureDetector(context,
                 new GestureDetector.SimpleOnGestureListener() {
@@ -54,7 +56,7 @@ public class MyViewPager extends ViewGroup {
                      */
                     @Override
                     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                        Toast.makeText(context, "滑动", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "滑动", Toast.LENGTH_SHORT).show();
                         /**
                          * 根据当前的位置移动
                          * 要求只是水平方向滑动,所以Y方向设置为getScrollY()(起始值)或者0
@@ -130,7 +132,7 @@ public class MyViewPager extends ViewGroup {
      *
      * @param tempIndex
      */
-    private void scrollToPager(int tempIndex) {
+    public void scrollToPager(int tempIndex) {
         if (tempIndex < 0) {
             tempIndex = 0;
         }
@@ -139,12 +141,15 @@ public class MyViewPager extends ViewGroup {
         }
         //当前页面的下标位置
         currentIndex = tempIndex;
+        if (mOnPagerChangerListener != null) {
+            mOnPagerChangerListener.onScrollToPager(currentIndex);
+        }
 
         int distanceX = currentIndex * getWidth() - getScrollX();
         //移动到指定的位置
         //scrollTo(currentIndex * getWidth(), 0);
-        scroller.startScroll(getScrollX(), getScrollY(), distanceX, 0);
-
+        //scroller.startScroll(getScrollX(), getScrollY(), distanceX, 0);
+        scroller.startScroll(getScrollX(), getScrollY(), distanceX, 0, Math.abs(distanceX)); //指定滚动的时长
         //刷新
         invalidate(); //这个方法会执行onDraw();computeScroll()
     }
@@ -152,13 +157,34 @@ public class MyViewPager extends ViewGroup {
     @Override
     public void computeScroll() {
         //super.computeScroll();
-        if (scroller.coputeScrollOffset()) {
+        if (scroller.computeScrollOffset()) {
 
             float currX = scroller.getCurrX();
-
+            System.out.println("偏移。。" + currX);
             scrollTo((int) currX, 0);
             //再次刷新
             invalidate();
         }
+    }
+
+    /**
+     * 监听页面的改变
+     */
+    public interface OnPagerChangerListener {
+        /**
+         * 当页面改变时回调这个方法
+         *
+         * @param position 当前页面的下标
+         */
+        void onScrollToPager(int position);
+    }
+
+    /**
+     * 设置页面改变的监听
+     *
+     * @param listener
+     */
+    public void setOnPagerChangerListener(OnPagerChangerListener listener) {
+        mOnPagerChangerListener = listener;
     }
 }

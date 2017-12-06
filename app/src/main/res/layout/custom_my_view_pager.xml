@@ -5,9 +5,17 @@
     android:layout_height="match_parent"
     tools:content="control.custom.customcontrol.activity.MyViewPagerActivity">
 
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" />
+
     <control.custom.customcontrol.view.MyViewPager
         android:id="@+id/myviewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rg" />
 
 </RelativeLayout>

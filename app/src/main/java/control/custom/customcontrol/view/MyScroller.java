@@ -3,6 +3,7 @@ package control.custom.customcontrol.view;
 import android.os.SystemClock;
 
 /**
+ * 解决自动回弹生硬问题
  * Created by Administrator on 2017/12/4 0004.
  */
 
@@ -71,7 +72,7 @@ public class MyScroller {
      *
      * @return
      */
-    public boolean coputeScrollOffset() {
+    public boolean computeScrollOffset() {
 
         if (isFinish) {
             return false;
@@ -81,13 +82,13 @@ public class MyScroller {
         long endTime = SystemClock.uptimeMillis();
         //移动开始到结束所花的时间
         long passTime = endTime - startTime;
-
+        System.out.println("passTime" + passTime);
         if (passTime < totalTime) {
             //移动未结束
             //计算移动的平均速度
-            //float volecity = distanceX / totalTime;
+            float volecity = distanceX / totalTime;
             //移动这一个小段对应的距离
-            float distanceSamllX = passTime * (distanceX / totalTime);
+            float distanceSamllX = passTime * volecity;
 
             currX = distanceSamllX + startX;
         } else {
