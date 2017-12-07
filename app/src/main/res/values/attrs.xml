@@ -9,4 +9,8 @@
         <!--定义一个名字叫my_bg并且类型是reference|color的属性-->
         <attr name="my_bg" format="reference|color" />
     </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr name="outCircleColor" format="color" />
+        <attr name="outCircleWidth" format="dimension" />
+    </declare-styleable>
 </resources>

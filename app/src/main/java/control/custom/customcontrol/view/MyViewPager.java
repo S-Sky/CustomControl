@@ -149,6 +149,8 @@ public class MyViewPager extends ViewGroup {
 
                 if (distanceX > distanceY && distanceX > 5) { //X轴上必须有移动
                     result = true;
+                } else { //测试页面斜着滑会出现bug(else是解决办法)
+                    scrollToPager(currentIndex);
                 }
 
                 break;
@@ -217,6 +219,7 @@ public class MyViewPager extends ViewGroup {
         //当前页面的下标位置
         currentIndex = tempIndex;
         if (mOnPagerChangerListener != null) {
+            System.out.println("MyViewPager==" + "scrollToPager->mOnPagerChangerListener==" + mOnPagerChangerListener);
             mOnPagerChangerListener.onScrollToPager(currentIndex);
         }
 
@@ -260,6 +263,7 @@ public class MyViewPager extends ViewGroup {
      * @param listener
      */
     public void setOnPagerChangerListener(OnPagerChangerListener listener) {
+        System.out.println("MyViewPager==" + "setOnPagerChangerListener->" + listener);
         mOnPagerChangerListener = listener;
     }
 

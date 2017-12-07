@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import control.custom.customcontrol.activity.AutoAttributeActivity;
 import control.custom.customcontrol.activity.MyViewPagerActivity;
 import control.custom.customcontrol.activity.ToggleButtonActivity;
@@ -16,16 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
+        ButterKnife.bind(this);
     }
 
-    private void initView() {
-        findViewById(R.id.slide_switch).setOnClickListener(this);
-        findViewById(R.id.auto_attribute).setOnClickListener(this);
-        findViewById(R.id.my_view_pager).setOnClickListener(this);
-    }
-
-    @Override
+    @OnClick({R.id.slide_switch, R.id.auto_attribute, R.id.my_view_pager, R.id.custom_head_image})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.slide_switch:
@@ -36,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.my_view_pager:
                 startActivity(new Intent(this, MyViewPagerActivity.class));
+                break;
+            case R.id.custom_head_image:
+                Toast.makeText(this, "头像", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

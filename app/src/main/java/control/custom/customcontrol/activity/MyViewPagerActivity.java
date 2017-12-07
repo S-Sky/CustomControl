@@ -38,7 +38,7 @@ public class MyViewPagerActivity extends AppCompatActivity {
 
         //添加测试页面
         View testView = View.inflate(this, R.layout.test, null);
-        myViewPager.addView(testView,2);
+        myViewPager.addView(testView, 2);
 
         for (int i = 0; i < myViewPager.getChildCount(); i++) {
             RadioButton radioButton = new RadioButton(this);
@@ -66,8 +66,13 @@ public class MyViewPagerActivity extends AppCompatActivity {
         });
         //设置监听页面的改变
         myViewPager.setOnPagerChangerListener(new MyViewPager.OnPagerChangerListener() {
+            /**
+             *
+             * @param position 当前页面的下标
+             */
             @Override
             public void onScrollToPager(int position) {
+                System.out.println("MyViewPagerActivity==" + "onScrollToPager");
                 rg.check(position);
             }
         });
