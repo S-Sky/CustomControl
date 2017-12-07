@@ -16,7 +16,6 @@ import android.widget.Toast;
  * 1、dispatchTouchEvent方法
  * 2、onInterceptTouchEvent方法
  * 3、onTouchEvent方法
- * </p>
  * Created by Administrator on 2017/12/2 0002.
  */
 

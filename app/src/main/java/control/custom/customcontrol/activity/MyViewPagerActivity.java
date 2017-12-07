@@ -12,6 +12,7 @@ import control.custom.customcontrol.R;
 import control.custom.customcontrol.view.MyViewPager;
 
 /**
+ * 继承ViewGroup模仿viewPager轮播
  * Created by Administrator on 2017/12/2 0002.
  */
 
