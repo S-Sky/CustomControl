@@ -14,8 +14,8 @@ import android.view.View;
 import control.custom.customcontrol.R;
 
 /**
- * Created by Administrator on 2017/12/1 0001.
  * 自定义属性
+ * Created by Administrator on 2017/12/1 0001.
  */
 
 public class AutoAttributeView extends View {

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import control.custom.customcontrol.R;
 
 /**
+ * 自定义属性
  * Created by Administrator on 2017/12/1 0001.
  */
 
