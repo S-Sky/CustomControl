@@ -9,6 +9,7 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import control.custom.customcontrol.activity.AutoAttributeActivity;
+import control.custom.customcontrol.activity.CircleImageActivity;
 import control.custom.customcontrol.activity.MyViewPagerActivity;
 import control.custom.customcontrol.activity.ToggleButtonActivity;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, MyViewPagerActivity.class));
                 break;
             case R.id.custom_head_image:
-                Toast.makeText(this, "头像", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, CircleImageActivity.class));
                 break;
         }
     }

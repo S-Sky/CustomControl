@@ -19,6 +19,7 @@
         <activity android:name=".activity.ToggleButtonActivity" />
         <activity android:name=".activity.AutoAttributeActivity" />
         <activity android:name=".activity.MyViewPagerActivity" />
+        <activity android:name=".activity.CircleImageActivity" />
     </application>
 
 </manifest>

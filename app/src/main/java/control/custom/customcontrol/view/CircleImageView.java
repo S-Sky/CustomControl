@@ -2,8 +2,13 @@ package control.custom.customcontrol.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -32,6 +37,7 @@ public class CircleImageView extends ImageView {
      * 外圆的宽度
      */
     private int outCircleWidth;
+
     /**
      * 背景画笔
      */
@@ -39,6 +45,8 @@ public class CircleImageView extends ImageView {
 
     private int viewWidth;
     private int viewHeight;
+
+    private Bitmap image;
 
     /**
      * 在代码中new CircleImageView()的时候调用这个函数
@@ -102,6 +110,62 @@ public class CircleImageView extends ImageView {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = measureWidth(widthMeasureSpec);
+        int height = measureHeight(heightMeasureSpec);
+
+        viewWidth = width - (outCircleWidth * 2);
+        viewHeight = height - (outCircleWidth * 2);
+
+        setMeasuredDimension(viewWidth, viewHeight);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        loadImg();
+
+        if (image != null) {
+            int min = Math.min(viewWidth, viewHeight);
+            System.out.println("min" + min);
+            int radius = min / 2;
+
+            image = Bitmap.createScaledBitmap(image, min, min, false);
+            System.out.println("==" + (radius + outCircleWidth));
+            canvas.drawCircle(radius, radius, radius, mPaint);
+            canvas.drawBitmap(createCircleBitmap(image, min), outCircleWidth, outCircleWidth, null);
+        }
+    }
+
+    /**
+     * 绘制显示的图片
+     *
+     * @param image
+     * @param min
+     * @return
+     */
+    private Bitmap createCircleBitmap(Bitmap image, int min) {
+        Bitmap bitmap = null;
+
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+
+        bitmap = Bitmap.createBitmap(min, min, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawCircle(min / 2 - outCircleWidth, min / 2 - outCircleWidth, min / 2 - outCircleWidth, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+
+        canvas.drawBitmap(image, 0, 0, paint);
+
+        return bitmap;
+    }
+
+    /**
+     * 获取显示的图片
+     */
+    private void loadImg() {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) this.getDrawable();
+        if (bitmapDrawable != null) {
+            image = bitmapDrawable.getBitmap();
+        }
     }
 
     private int measureWidth(int widthMeasureSpec) {
@@ -109,8 +173,25 @@ public class CircleImageView extends ImageView {
         int mode = MeasureSpec.getMode(widthMeasureSpec);
         int size = MeasureSpec.getSize(widthMeasureSpec);
 
-        if (mode == MeasureSpec.EXACTLY){}
+        if (mode == MeasureSpec.EXACTLY) {
+            result = size;
+        } else {
+            result = viewWidth;
+        }
+        System.out.println("widthMeasureSpec" + result);
+        return result;
+    }
 
+    private int measureHeight(int heightMeasureSpec) {
+        int result = 0;
+        int mode = MeasureSpec.getMode(heightMeasureSpec);
+        int size = MeasureSpec.getSize(heightMeasureSpec);
+        if (mode == MeasureSpec.EXACTLY) {
+            result = size;
+        } else {
+            result = viewHeight;
+        }
+        System.out.println("heightMeasureSpec" + result);
         return result;
     }
 }

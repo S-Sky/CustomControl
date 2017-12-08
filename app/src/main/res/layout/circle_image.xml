@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF47F8D">
+
+    <control.custom.customcontrol.view.CircleImageView
+        android:id="@+id/circle_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/landscape"
+        app:outCircleColor="#FFFFFF"
+        app:outCircleWidth="2dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
