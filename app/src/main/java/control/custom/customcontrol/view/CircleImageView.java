@@ -101,11 +101,20 @@ public class CircleImageView extends ImageView {
                 }
             }
         }
+        /**
+         * 初始化画笔
+         */
         mPaint = new Paint();
         mPaint.setColor(outCircleColor);
         mPaint.setAntiAlias(true);
     }
 
+    /**
+     * 测量视图的大小
+     *
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -121,14 +130,12 @@ public class CircleImageView extends ImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         loadImg();
-
         if (image != null) {
             int min = Math.min(viewWidth, viewHeight);
             System.out.println("min" + min);
             int radius = min / 2;
 
             image = Bitmap.createScaledBitmap(image, min, min, false);
-            System.out.println("==" + (radius + outCircleWidth));
             canvas.drawCircle(radius, radius, radius, mPaint);
             canvas.drawBitmap(createCircleBitmap(image, min), outCircleWidth, outCircleWidth, null);
         }
@@ -178,7 +185,6 @@ public class CircleImageView extends ImageView {
         } else {
             result = viewWidth;
         }
-        System.out.println("widthMeasureSpec" + result);
         return result;
     }
 
@@ -191,7 +197,6 @@ public class CircleImageView extends ImageView {
         } else {
             result = viewHeight;
         }
-        System.out.println("heightMeasureSpec" + result);
         return result;
     }
 }
