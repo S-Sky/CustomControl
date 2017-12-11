@@ -21,6 +21,7 @@
         <activity android:name=".activity.AutoAttributeActivity" />
         <activity android:name=".activity.MyViewPagerActivity" />
         <activity android:name=".activity.CircleImageActivity" />
+        <activity android:name=".activity.GesturePasswordActivity" />
     </application>
 
 </manifest>
