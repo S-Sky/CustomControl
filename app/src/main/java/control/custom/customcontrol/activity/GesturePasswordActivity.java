@@ -41,7 +41,6 @@ public class GesturePasswordActivity extends AppCompatActivity {
             gesturePasswordView.setPassword(PrefUtils.getString(GesturePasswordActivity.this, "gesturePsw", ""));
         }
 
-
         gesturePasswordView.setViewListener(new GesturePasswordView.PatternViewListener() {
             @Override
             public void onSuccess() {
@@ -76,7 +75,6 @@ public class GesturePasswordActivity extends AppCompatActivity {
                 tv_state.setText("手势密码错误，请重新输入");
             }
         });
-
     }
 
     @OnClick(R.id.btn_reset)
