@@ -183,7 +183,7 @@ public class GesturePasswordView extends View {
                 return true;
             case MotionEvent.ACTION_UP:
 
-                if (isSetting) {
+                if (isSetting) { //设置密码时
                     if (input != null && input.length() > 3) {
                         String result = input;
                         resetPatternView();
