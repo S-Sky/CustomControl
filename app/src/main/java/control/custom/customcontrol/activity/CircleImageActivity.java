@@ -87,21 +87,24 @@ public class CircleImageActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case REQUESTCODE_CAM:
-                startPhotoZoom(Uri.fromFile(file));
-                break;
-            case REQUESTCODE_PIC:
-                if (data == null || data.getData() == null) {
-                    return;
-                }
-                startPhotoZoom(data.getData());
-                break;
-            case REQUESTCODE_CUT:
-                if (data != null) {
-                    setPicToView(data);
-                }
-                break;
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUESTCODE_CAM:
+                    startPhotoZoom(Uri.fromFile(file));
+                    break;
+                case REQUESTCODE_PIC:
+                    if (data == null || data.getData() == null) {
+                        return;
+                    }
+                    startPhotoZoom(data.getData());
+                    break;
+                case REQUESTCODE_CUT:
+                    if (data != null) {
+                        setPicToView(data);
+                    }
+                    break;
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
